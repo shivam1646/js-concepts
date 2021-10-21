@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .bar-container {
+      width: 200px;
+      height: 30px;
+      margin: 20px;
+      background-color: lightgray;
+    }
+    .bar {
+      height: 100%;
+      background-color: green;
+      width: 0%;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="bar-container">
+    <div class="bar">0%</div>
+  </div>
+  <button onclick="fillBar(2)">Start</button>
+
+  <script>
+    const fillBar = function (seconds) {
+      const bar = document.querySelector('.bar');
+      let currentPercent = 0;
+      const interval = setInterval(() => {
+        bar.style.width = `${++currentPercent}%`;
+        bar.innerHTML = `${currentPercent}%`;
+        if (currentPercent >= 100) {
+          clearInterval(interval);
+        }
+      }, (seconds*1000)/100);
+      // or we can do it this way too :-
+      // bar.style.transition = `${seconds}s linear width`;
+      // bar.style.width = '100%';
+    }
+  </script>
+</body>
+</html>
